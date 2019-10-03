@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './GameHeader.scss';
 import excelPlayLogo from '../../../assets/logo.png';
+import SideNav from './SideNav/SideNav';
 
 const MItem = props => {
   return (
@@ -12,27 +13,52 @@ const MItem = props => {
   );
 };
 
-const GameHeader = (props) => {
+const GameHeader = props => {
+  const [sideMenuVisibility, setSideMenuVisibility] = useState(false);
+  function toggleMenu() {
+    setSideMenuVisibility(!sideMenuVisibility);
+  }
   return (
     <div className="gameHeader">
       <div className="top-banner">
         <div className="row">
           <div className="col-md-4">
             <div className="d-flex">
-	            <div className="excel-play-logo">
-		            <img src={excelPlayLogo} className="img img-fluid" alt="" />
-	            </div>
+              <div className="excel-play-logo">
+                <a href="/">
+                  <img
+                    src={excelPlayLogo}
+                    className="img img-fluid play-logo"
+                    alt=""
+                  />
+                </a>
+              </div>
               <div>
-                <img src={props.icon} className="img img-fluid" alt="" />
+                <img
+                  src={props.icon}
+                  className="img img-fluid game-logo"
+                  alt=""
+                />
               </div>
               <div>
                 <h1>{props.gName}</h1>
               </div>
             </div>
           </div>
-          <div className="col-md-8">
-            <ul className="nav justify-content-end">
-	            {props.children}
+          <div className="menu-icon">
+            <i className="fa fa-navicon" onClick={toggleMenu} />
+          </div>
+          <div className={`${sideMenuVisibility.toString()} sideMenu`}>
+            <SideNav
+              toggleMenu={toggleMenu}
+              sideMenuVisibility={sideMenuVisibility}
+            >
+              {props.children}
+            </SideNav>
+          </div>
+          <div className="col-md-8 d-none d-md-block">
+            <ul className="nav justify-content-end nav-main">
+              {props.children}
             </ul>
           </div>
         </div>

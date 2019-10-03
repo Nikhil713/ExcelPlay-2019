@@ -1,0 +1,47 @@
+@import "../../../../global";
+
+.sideNav{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: +3;
+  .menu{
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    background: black;
+    margin-left: -100%;
+    z-index: +5;
+    transition: margin-left .5s ease-out;
+    padding: 4em 0 4em 0;
+    .nav-item{
+      margin: 0;
+      padding: 0 0 1em 0;
+    }
+    .nav-item:hover {
+      background: $bg;
+    }
+    a{
+      display: block;
+      padding: 0 0 0 2em;
+      font-size: 1.7em;
+      color: white;
+    }
+  }
+  .menu.true{
+    margin-left: 0;
+    transition: margin-left .5s ease-out;
+  }
+  .backDrop{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: .5;
+    z-index: +4;
+  }
+}
+
+.sideMenu.false{
+  visibility: hidden;
+}

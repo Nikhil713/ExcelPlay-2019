@@ -3,7 +3,7 @@ import './ListCompanies.scss';
 
 const Company = () => {
   return (
-    <div className="company">
+    <div className="company" data-toggle="modal" data-target="#share-modal">
       <div className="row">
         <div className="c-details">
           <div className="float-left">
@@ -27,13 +27,13 @@ const Company = () => {
   );
 };
 
+// eslint-disable-next-line
 const allCompany = companies => {
   // TODO: Remove the log and use the data to set the props of <Company />
   const allc = [];
   for (let i = 0; i < 10; i += 1) {
-    allc.push(<Company key={i}/>);
+    allc.push(<Company key={i} />);
   }
-
   return allc.map(e => e);
 };
 
@@ -44,7 +44,7 @@ const ListCompanies = () => {
     // TODO: remove the follwing line
     setCompanies([]);
     // TODO: fetch initial list of companies here and set using setCompanies
-  });
+  }, []);
 
   function sortProperties(obj) {
     // convert object into array

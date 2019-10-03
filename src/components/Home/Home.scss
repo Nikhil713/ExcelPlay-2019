@@ -1,0 +1,12 @@
+@import '../../global';
+
+.cell {
+  cursor: pointer;
+  // padding: 30px;
+  margin-bottom: 3em;
+  font-weight: 800;
+  font-size: 1.7em;
+  // background-color: yellow;
+  color: $primary-alt;
+  font-family: $font-homePage;
+}
